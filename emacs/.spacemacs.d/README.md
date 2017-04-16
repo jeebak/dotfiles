@@ -2,14 +2,13 @@
 
 ## Installation
 
-`brew info emacs` says the cask verion's better Cocoa .app
-
 ```
-  brew install emacs
-  brew cask install emacs
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+brew linkapps emacs-plus
 ```
 
-Since they're separate apps, no need for: `emacs -nw`, for terminal version
+Need to use: `emacs -nw`, for terminal version.
 
 ```
   git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
