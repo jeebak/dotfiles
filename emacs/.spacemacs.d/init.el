@@ -3,6 +3,7 @@
 ;; It must be stored in your home directory.
 
 ;; Compare: ~/.spacemacs.d/init.el ~/.emacs.d/core/templates/.spacemacs.template
+;; NOTE: `SPC f e D`, will invoke `ediff-dotfile-and-template`
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.

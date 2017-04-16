@@ -3,18 +3,19 @@
 ## Installation
 
 `brew info emacs` says the cask verion's better Cocoa .app
+
 ```
   brew install emacs
   brew cask install emacs
 ```
 
-Since there're separate apps, no need for: emacs -nw, for terminal version
+Since they're separate apps, no need for: `emacs -nw`, for terminal version
 
 ```
   git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ```
 
-  NOTE: `SPC f e D`, will invoke `ediff-dotfile-and-template`
+  NOTE: `SPC f e D`, will invoke `spacemacs/ediff-dotfile-and-template`
 
 ## Help/Tutorial
 
@@ -28,6 +29,18 @@ Since there're separate apps, no need for: emacs -nw, for terminal version
 
   [FAQ](http://spacemacs.org/doc/FAQ.html)
   [SimpleTutorials](https://simpletutorials.com/c/2883/Spacemacs)
+
+## Customizations
+
+* `init.el` start as copy of `~/.emacs.d/core/templates/.spacemacs.template`, add personalizations
+* `user-config.el` contains the bulk of customizations, overriding `spacemacs`'s default behavior
+* `user-init.el` ()`It is called immediately after `dotspacemacs/init', before layer configuration executes.`)
+
+Custom keybindings in: `user-config.el`
+  * CtrlP     <- HELM Projectile
+  * CtrlSpace <- helm-mini
+  * NERDTree  <- neo-tree
+  * Line numbers on by default
 
 ## Vim Equivalents
 
@@ -58,12 +71,6 @@ Misc
   * Visual modes (`^v`, `v`, `V`) are the same
   * `:close` seems to work (`C-x k` to `kill buffer`)
   
-Custom keybindings in: `user-config.el`
-  * CtrlP     <- HELM Projectile
-  * CtrlSpace <- helm-mini
-  * NERDTree  <- neo-tree
-  * Line numbers on by default
-
 ## Spacemacs Layers
   [layers](https://github.com/syl20bnr/spacemacs/tree/master/layers)
 
@@ -86,7 +93,7 @@ Custom keybindings in: `user-config.el`
 ## Terminal
   `^z` is mapped to evil-toggle-key, by default, override in: `user-init.el`
 
-  Opacity, override in: `user-config.el`
+  Opacity, overridden in: `user-config.el`
   
 ## References
 https://www.reddit.com/r/spacemacs/
