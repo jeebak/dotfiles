@@ -75,7 +75,9 @@ Misc
   [layers](https://github.com/syl20bnr/spacemacs/tree/master/layers)
 
   * [imenu-list](https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/imenu-list) `SPC b i`
-  * [Ranger](http://spacemacs.org/layers/+tools/ranger/README.html) `SPC a i` (similar) to `SPC j i` (`helm-jump-in-buffer`)
+  * [ranger](http://spacemacs.org/layers/+tools/ranger/README.html) `SPC a i` (similar) to `SPC j i` (`helm-jump-in-buffer`)
+  * [restclient](https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/restclient) and
+    + [restclient.el](https://github.com/pashky/restclient.el)
 
 ## Tmux
   `evil-tmux-navigator` is available by default
