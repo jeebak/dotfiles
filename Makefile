@@ -2,6 +2,9 @@ SHELL := /bin/bash
 
 # TODO: make these generic
 
+stow-beets:
+	@stow -v -t "$$HOME" beets
+
 stow-emacs:
 	@stow -v -t "$$HOME" emacs
 
