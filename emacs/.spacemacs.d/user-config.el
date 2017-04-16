@@ -71,7 +71,9 @@
 
 ;; Setting Mark -> CtrlSpace
 ;; Recent Files are also dislayed with: ... 'helm-mini)
-(define-key evil-normal-state-map (kbd "C-@") 'helm-projectile-switch-to-buffer)
+(if (display-graphic-p)
+  (define-key evil-normal-state-map (kbd "C-SPC") 'helm-projectile-switch-to-buffer)
+  (define-key evil-normal-state-map (kbd "C-@") 'helm-projectile-switch-to-buffer))
 
 ;; https://www.emacswiki.org/emacs/SwitchingBuffers
 (define-key evil-normal-state-map (kbd "TAB") 'mode-line-other-buffer)
