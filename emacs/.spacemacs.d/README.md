@@ -78,6 +78,7 @@ Misc
   * [ranger](http://spacemacs.org/layers/+tools/ranger/README.html) `SPC a i` (similar) to `SPC j i` (`helm-jump-in-buffer`)
   * [restclient](https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/restclient) and
     + [restclient.el](https://github.com/pashky/restclient.el)
+  * [speed-reading](https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/speed-reading) `SPC a R` (with `f`aster, and `s`lower)
 
 ## Tmux
   `evil-tmux-navigator` is available by default
