@@ -1,0 +1,9 @@
+# Add contents like the following, and chmod 600, as appropriate:
+[user]
+  name  = Awesome Name
+  email = awesome@name.com
+[github]
+  user = mygithubusername
+  token = myS3cr3tg1t4ubT0k3n
+
+# vim:set filetype=gitconfig:

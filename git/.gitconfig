@@ -1,0 +1,185 @@
+# Various tips from:
+#   http://blog.causes.com/2011/11/happy-thanks-git-ving-gitconfig-tips-from-causes-engineering/
+#   http://gitready.com/
+#   http://mislav.uniqpath.com/2010/07/git-tips/
+#   http://nuclearsquid.com/writings/git-tricks-tips-workflows/
+#   http://oli.jp/2012/git-powerup/
+#   http://scie.nti.st/2007/5/2/colors-in-git
+
+# http://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-github
+#   https://help.github.com/articles/set-up-git#platform-linux
+[credential]
+  helper = cache --timeout=36000
+
+# https://help.github.com/articles/set-up-git#platform-mac
+# ~/.dotfiles/bin/git-credential-wrapper
+[credential]
+  helper = wrapper
+
+[branch]
+  autosetuprebase = always
+
+[push]
+  default = matching
+
+[color]
+  branch = auto
+  diff   = auto
+  status = auto
+  ui     = auto
+
+[color "branch"]
+  current = yellow reverse
+  local   = yellow
+  remote  = green
+
+[color "diff"]
+  frag = magenta bold
+  meta = yellow bold
+  new  = green bold
+  old  = red bold
+
+[color "status"]
+  added     = yellow
+  changed   = green
+  untracked = cyan
+
+[core]
+  # Variables don't work in this file, but git defaults to: $VISUAL or $EDITOR,
+  # then vi, anyway
+  # editor          = $EDITOR
+  attributesfile  = ~/.config/dotfiles/git/attributesfile.conf
+  excludesfile    = ~/.config/dotfiles/git/excludesfile.conf
+  pager           = less -RSX --tabs=2
+  quotepath = false
+  # Tell Git which whitespace problems it should recognize, namely any whitespace at the end of a line, as well as mixed spaces and tabs:
+  whitespace      = trailing-space,space-before-tab
+
+#[help]
+#  autocorrect = 30
+
+[log]
+  date = local
+
+# http://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+[merge]
+ #tool   = splice
+  tool   = vcs-merge-wrapper.bash
+  prompt = no
+# Need to research/test thie more
+#  renormalize = true
+
+[mergetool]
+  tool = vcs-merge-wrapper.bash
+
+[mergetool "vcs-merge-wrapper.bash"]
+  cmd = vcs-merge-wrapper.bash "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  trustExitCode = false
+
+[difftool "vcs-merge-wrapper.bash"]
+  cmd = vcs-merge-wrapper.bash "$LOCAL" "$REMOTE"
+  path =
+
+#[mergetool "splice"]
+#  cmd = "gvim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+#  trustExitCode = true
+
+# http://stackoverflow.com/questions/8883189/how-can-i-turn-on-a-pager-for-the-output-of-git-status
+#[pager]
+#  status = true
+
+# not sure if this works
+[diff]
+  wordregex = [[:alnum:]]+|[^[:space:]]
+  tool    = vcs-merge-wrapper.bash
+  # Allow git diff to do basic rename and copy detection:
+  renames = copies
+  # Tell git diff to use mnemonic prefixes (index, work tree, commit, object) instead of the standard a and b notation:
+  mnemonicprefix = true
+  # http://hugogiraudel.com/2014/03/10/git-tips-and-tricks-part-1/
+  # http://hugogiraudel.com/2014/03/17/git-tips-and-tricks-part-2/
+  # http://hugogiraudel.com/2014/03/24/git-tips-and-tricks-part-3/
+  # This seems to "win" (vs. mnemonicprefix)
+  noprefix = true
+
+# http://superuser.com/questions/706042/how-can-i-diff-binary-files-in-git
+# http://contender-x.blogspot.com/2013/11/make-it-work-global-gitattributes.html
+#
+# Requires corresponding lines in ~/.gitattributes, like:
+#   *.foo       diff=foo
+# NOTE: that the foo in: diff=foo does is NOT the .ext, but rather the
+# corresponding entry below:
+#   [diff "foo"]
+# ... and that core.attributesfile is set to point to ~/.gitattributes
+# Also look at: https://gist.github.com/g-k/9087422
+
+[diff "gpg"]
+  textconv = gpg -d
+  cachetextconv = false
+  binary = true
+
+[diff "jpg"]
+  textconv = exiftool
+  cachetextconv = true
+
+[diff "pdf"]
+  textconv = pdfinfo
+  cachetextconv = true
+
+[diff "plist"]
+  textconv = plutil -convert xml1 -o -
+
+[diff "zip"]
+  textconv = unzip -v
+  cachetextconv = true
+
+[difftool]
+  tool   = gvimdiff "$1" "$2"
+  prompt = no
+
+[grep]
+  extendRegexp = true
+  lineNumber   = true
+
+[tig]
+  show-line-numbers    = yes
+  show-author          = yes
+  show-rev-graph       = yes
+  show-refs            = yes
+  show-date            = yes
+  author-width         = 10
+  line-graphics        = no
+  line-number-interval = 1
+  tab-size             = 2
+
+[tig "bind"]
+  generic = 0 move-first-line
+  main    = G move-last-line  # Can't seem to unbind the external 'git gc' as 'generic' :/
+  diff    = G move-last-line
+  log     = G move-last-line
+  tree    = G move-last-line
+  blob    = G move-last-line
+  blame   = G move-last-line
+  branch  = G move-last-line
+  status  = G move-last-line
+  stage   = G move-last-line
+  generic = f move-page-down
+
+# http://travisjeffery.com/b/2012/03/using-gits-include-for-private-information-like-github-tokens/
+[include]
+  path = ~/.config/dotfiles/git/alias.conf
+  # See Example in: ~/.config/dotfiles/git/user.conf-example
+  path = ~/.config/dotfiles/private/git-user.conf
+  # This file ^ could also be used to add local untracked configs
+
+# vim: set ft=gitconfig:
+
+# Start: SourceTree
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+# End: SourceTree
