@@ -59,15 +59,6 @@
 ;; (rainbow-mode)
 (auto-complete-mode t)
 ;; -----------------------------------------------------------------------------
-;; Currently, the develop branch of spacemacs switched to diff-hl
-;; https://github.com/syl20bnr/spacemacs/issues/1872
-;; http://stackoverflow.com/questions/7790382/how-to-determine-whether-a-package-is-installed-in-elisp
-(eval-after-load 'diff-hl
-  (progn
-    (setq diff-hl-side 'right)
-    (add-hook 'prog-mode-hook 'diff-hl-mode)
-    (add-hook 'dired-mode-hook 'diff-hl-dired-mode)))
-;; -----------------------------------------------------------------------------
 ;; Setting and showing the 80-character column width
 (set-fill-column 80)
 ;; -----------------------------------------------------------------------------
