@@ -10,3 +10,6 @@ stow-git:
 
 stow-jshint:
 	@stow -v -t "$$HOME" jshint
+
+stow-less:
+	@stow -v -t "$$HOME" less
