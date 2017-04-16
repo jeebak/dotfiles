@@ -5,6 +5,9 @@ SHELL := /bin/bash
 stow-beets:
 	@stow -v -t "$$HOME" beets
 
+stow-colordiff:
+	@stow -v -t "$$HOME" colordiff
+
 stow-emacs:
 	@stow -v -t "$$HOME" emacs
 
