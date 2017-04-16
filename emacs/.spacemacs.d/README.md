@@ -41,6 +41,7 @@ Custom keybindings in: `user-config.el`
   * CtrlSpace <- helm-mini
   * NERDTree  <- neo-tree
   * Line numbers on by default
+  * [Ranger](http://spacemacs.org/layers/+tools/ranger/README.html) `SPC a r`
 
 ## Vim Equivalents
 
