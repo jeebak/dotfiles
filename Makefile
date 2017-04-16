@@ -7,3 +7,6 @@ stow-emacs:
 
 stow-git:
 	@stow -v -t "$$HOME" git
+
+stow-jshint:
+	@stow -v -t "$$HOME" jshint
