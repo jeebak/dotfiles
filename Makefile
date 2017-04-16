@@ -16,3 +16,6 @@ stow-jshint:
 
 stow-less:
 	@stow -v -t "$$HOME" less
+
+stow-tmux:
+	@stow -v -t "$$HOME" tmux
