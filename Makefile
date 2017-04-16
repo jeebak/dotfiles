@@ -1,33 +1,19 @@
 SHELL := /bin/bash
 
-# TODO: make these generic
+STOWABLE = beets colordiff emacs git jshint less mpv screen ranger tmux
+STOW_OPTIONS =
 
-stow-beets:
-	@stow -v -t "$$HOME" beets
+stow-all: STOW_OPTIONS =
+stow-all: $(STOWABLE)
 
-stow-colordiff:
-	@stow -v -t "$$HOME" colordiff
+restow-all: STOW_OPTIONS = -R
+restow-all: $(STOWABLE)
 
-stow-emacs:
-	@stow -v -t "$$HOME" emacs
+unstow-all: STOW_OPTIONS = -D
+unstow-all: $(STOWABLE)
 
-stow-git:
-	@stow -v -t "$$HOME" git
+$(STOWABLE):
+	@echo "$$(tput setaf 3)Processing: $$(tput setaf 5)$@$$(tput sgr0)"
+	@stow --no-folding -v -t "$$HOME" $(STOW_OPTIONS) $@
 
-stow-jshint:
-	@stow -v -t "$$HOME" jshint
-
-stow-less:
-	@stow -v -t "$$HOME" less
-
-stow-mpv:
-	@stow -v -t "$$HOME" mpv
-
-stow-screen:
-	@stow -v -t "$$HOME" screen
-
-stow-ranger:
-	@stow -v -t "$$HOME" ranger
-
-stow-tmux:
-	@stow -v -t "$$HOME" tmux
+.PHONY: $(STOWABLE)
