@@ -1,0 +1,162 @@
+escape ^ee
+# termcapinfo xterm* ti@:te@
+# --------------------------------------------------------------------
+# vim:filetype=screen:set foldmethod=marker:
+# --------------------------------------------------------------------
+activity          "Activity in %n (%t) [%w:%s]~"
+autodetach        on
+#bce               on
+bell              "Bell     in %n (%t) [%w:%s]~"
+caption splitonly "split screen: %n %t"
+# STRING ESCAPES
+# %{-b}				-	remove the set from the current attributes, bold
+# %{= wb}			=	change the current attributes to the specified set, white BG, blue FG
+# %-Lw
+# %{= wr}			=	change the current attributes to the specified set, white BG, red FG
+# %50>
+# %{+b}				+	add the specified set to the current attributes, bold
+# %n				n	window number
+# %f				f	flags of the window
+# %t				t	window title
+# %{= wb}			=	change the current attributes to the specified set, white BG, blue FG
+# %{-b}				-	remove the set from the current attributes, bold
+# %+Lw				+	add the specified set to the current attributes
+# %{= wr}			=	change the current attributes to the specified set, white BG, red FG
+# %-016=
+# %c:%s %Y-%m-%d'	c	current time HH:MM in 24h format, s	seconds, YYYY-MM-DD
+#caption always '%{-b}%{= wb}%-Lw%{= wr}%50>%{+b}%n%f %t%{= wb}%{-b}%+Lw%{= wr}%-016=%c:%s %Y-%m-%d'
+#caption always '%{-r}%{= wr}%-Lw%{= wb}%50>%{+r}%n%f %t%{= wr}%{-r}%+Lw%{= wb}%-016=%c:%s %Y-%m-%d'
+#{{{ s:caption example source
+# From: Miciah Dashiel Butler Masters <gcgs-gnu-screen@gmane.org>
+# To: gnu-screen@yahoogroups.com
+# Subject: Re: caption question
+# Date: Wed, 21 May 2003 04:03:57 +0000 (UTC)
+# Message-ID: <baetrd$j35$1@main.gmane.org>
+# User-Agent: slrn/0.9.7.4 (Linux)
+#
+# In article <20030516190507.GB17359@stud.uni-erlangen.de>,
+#}}} s:caption example source
+crlf              off
+# Not defined in Mac OS X. Commenting seems to have no effect?!
+# deflogin          off
+defscrollback     3000
+hardcopy_append   on
+hardstatus        off
+# Slow escape key?
+#   http://unix.stackexchange.com/questions/8439/gnu-screen-makes-vim-esc-key-slow
+maptimeout        0
+pow_detach_msg    "BYE"
+silencewait       15
+#sorendition       01 93
+sorendition       00 60
+#{{{ s:sorendition examples source
+# http://groups.yahoo.com/group/gnu-screen/message/221
+#
+# sorendition <attribute> <color>
+# sorendition ab cd // a,c=bg b,d=fg
+#
+# ab c&d c&d
+# 00 normal 0 black 4 blue
+# 1- invert 1 red 5 magenta
+# 25 bright 2 green 6 cyan
+# 3- 1+2 3 brown 7 silver
+#
+# * attributes are cumulative, so a=3 is invert+bright
+# * colors use the same codes for bg & fg colors,
+# so cd=22 all you get is green, text unreadable
+#
+# examples:
+# 00 02 - black bg (0), green fg (2), no attributes (00)
+# 20 30 - brown bg (3), black fg (0), bright bg (2) -> turns yellow
+# 35 74 - silver bg (7), blue fg (4), invert, bright bg (3), bright fg (5)
+
+# 0 = black   3 = yellow    6 = cyan
+# 1 = red     4 = blue      7 = white
+# 2 = green   5 = magenta   9 = transparent
+#}}} s:sorendition examples source
+startup_message off
+# http://www.vim.org/scripts/script.php?script_id=2140
+term screen-256color
+attrcolor b ".I"
+# Tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# Erase background with current bg color.  Not needed if TERM=screen-256color
+defbce "on"
+#term vt100
+#termcap  xterm 'AF=\E[3%dm:AB=\E[4%dm'
+#terminfo xterm 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+termcap  vt100  'ku=\E[A:kd=\E[B:kr=\E[C:kl=\E[D:kh=\E[1~:kH=\E[4~:kI=\E[2~:kD=\E[3~:kP=\E[5~:kN=\E[6~'
+terminfo vt100  'ku=\E[A:kd=\E[B:kr=\E[C:kl=\E[D:kh=\E[1~:kH=\E[4~:kI=\E[2~:kD=\E[3~:kP=\E[5~:kN=\E[6~'
+termcap  xterm* 'ku=\E[A:kd=\E[B:kr=\E[C:kl=\E[D:kh=\E[1~:kH=\E[4~:kI=\E[2~:kD=\E[3~:kP=\E[5~:kN=\E[6~'
+terminfo xterm* 'ku=\E[A:kd=\E[B:kr=\E[C:kl=\E[D:kh=\E[1~:kH=\E[4~:kI=\E[2~:kD=\E[3~:kP=\E[5~:kN=\E[6~'
+#{{{ s:termcap keys stuff
+# Cursor up        ku  stuff \033[A      Function key 8   k8  stuff \033[19~
+# Cursor down      kd  stuff \033[B      Function key 9   k9  stuff \033[20~
+# Cursor right     kr  stuff \033[C      Function key 10  k;  stuff \033[21~
+# Cursor left      kl  stuff \033[D      Function key 11  F1  stuff \033[23~
+# Function key 0   k0  stuff \033[10~    Function key 12  F2  stuff \033[24~
+# Function key 1   k1  stuff \033OP      Home             kh  stuff \033[1~
+# Function key 2   k2  stuff \033OQ      End              kH  stuff \033[4~
+# Function key 3   k3  stuff \033OR      Insert           kI  stuff \033[2~
+# Function key 4   k4  stuff \033OS      Delete           kD  stuff \033[3~
+# Function key 5   k5  stuff \033[15~    Page up          kP  stuff \033[5~
+# Function key 6   k6  stuff \033[17~    Page down        kN  stuff \033[6~
+# Function key 7   k7  stuff \033[18~
+#}}} s:termcap keys stuff
+
+vbell           on
+vbell_msg       " *&(#! Friggin' OUCH!!! *(^#= "
+# --------------------------------------------------------------------
+#{{{ s:Key bindings
+bind ^h prev
+bind ^l next
+
+bind R resize
+bind y resize -1
+bind u resize +1
+bind - split
+# bind v split -v
+# vi-like navigation, for splits
+bind h focus top
+bind j focus down
+bind k focus up
+bind l focus bottom
+#}}} s:Key bindings
+# --------------------------------------------------------------------
+#{{{ s:Twiddler friendly key bindings
+# insert delete home end pgup pgdn
+bindkey "\033Op" stuff "\033[2~"
+bindkey "\033On" stuff "\033[3~"
+bindkey "\033Ow" stuff "\033[1~"
+bindkey "\033Oq" stuff "\033[4~"
+bindkey "\033Oy" stuff "\033[5~"
+bindkey "\033Os" stuff "\033[6~"
+# up down right left
+bindkey "\033Ox" stuff "\033OA"
+bindkey "\033Or" stuff "\033OB"
+bindkey "\033Ov" stuff "\033OC"
+bindkey "\033Ot" stuff "\033OD"
+# Function keys
+bindkey "\033[11~" stuff "\033OP"
+bindkey "\033[12~" stuff "\033OQ"
+bindkey "\033[13~" stuff "\033OR"
+bindkey "\033[14~" stuff "\033OS"
+bindkey "\033[15~" stuff "\033[15~"
+bindkey "\033[17~" stuff "\033[17~"
+bindkey "\033[18~" stuff "\033[18~"
+bindkey "\033[19~" stuff "\033[19~"
+bindkey "\033[20~" stuff "\033[20~"
+bindkey "\033[21~" stuff "\033[21~"
+#}}} s:Twiddler friendly key bindings
+# http://stackoverflow.com/questions/70614/gnu-screen-survival-guide/1236687#1236687
+bind  ! select 11
+bind  @ select 12
+bind \# select 13
+bind  $ select 14
+bind  % select 15
+bind \^ select 16
+bind  & select 17
+bind  * select 18
+bind  ( select 19
+bind  ) select 10
+# --------------------------------------------------------------------

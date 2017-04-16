@@ -20,6 +20,9 @@ stow-jshint:
 stow-less:
 	@stow -v -t "$$HOME" less
 
+stow-screen:
+	@stow -v -t "$$HOME" screen
+
 stow-ranger:
 	@stow -v -t "$$HOME" ranger
 
