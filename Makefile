@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 ACTION = stow
-STOWABLE = beets colordiff emacs git jshint less mpv screen ranger tmux
+STOWABLE = beets colordiff emacs fzf git jshint less mpv screen ranger tmux
 STOW_OPTIONS =
 
 stow-all: ACTION = stow
