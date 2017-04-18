@@ -14,6 +14,9 @@ unstow-all: $(STOWABLE)
 
 $(STOWABLE):
 	@echo "$$(tput setaf 3)Processing: $$(tput setaf 5)$@$$(tput sgr0)"
-	@stow --no-folding -v -t "$$HOME" $(STOW_OPTIONS) $@
+	@stow -v -t "$$HOME" \
+		--no-folding \
+		--ignore='^README.md$$' \
+ 		$(STOW_OPTIONS) $@
 
 .PHONY: $(STOWABLE)
