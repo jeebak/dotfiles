@@ -169,7 +169,7 @@
 [include]
   path = ~/.config/dotfiles/git/alias.conf
   # See Example in: ~/.config/dotfiles/git/user.conf-example
-  path = ~/.config/dotfiles/private/git-user.conf
+  path = ~/.config/dotfiles/private/git/user.conf
   # This file ^ could also be used to add local untracked configs
 
 # vim: set ft=gitconfig:
