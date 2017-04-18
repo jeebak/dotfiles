@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# http://stackoverflow.com/a/6110446
+set -e
+trap 'prev_cmd=$this_cmd; this_cmd=$BASH_COMMAND' DEBUG
+trap 'EC=$?; BAD_CMD="$prev_cmd"; [[ $EC -ne 0 ]] && echo "Exit: $EC, due to: $BAD_CMD"' EXIT
+
+CACHE_ROOT="$HOME/.cache/dotfiles"
+
+[[ ! -d "$CACHE_ROOT"           ]] && mkdir -p "$CACHE_ROOT"
+[[ ! -d "$CACHE_ROOT/spacemacs" ]] && git clone https://github.com/syl20bnr/spacemacs "$CACHE_ROOT/spacemacs" || true
+
+[[ ! -e "$HOME/.emacs.d" ]] && ln -svf "$CACHE_ROOT/spacemacs" "$HOME/.emacs.d"
+
+[[ "$(readlink "$HOME/.emacs.d")" == "$CACHE_ROOT/spacemacs" ]]
