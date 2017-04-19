@@ -3,8 +3,8 @@
 CURRENT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "$CURRENT_DIR/../../.lib/scripts/common.bash"
 
-shallow_clone https://github.com/junegunn/fzf.git "$CACHE_ROOT/fzf"
-makelink   "$HOME/.fzf" "$CACHE_ROOT/fzf"
-verifylink "$HOME/.fzf" "$CACHE_ROOT/fzf"
+cache_shallow_clone https://github.com/junegunn/fzf.git "fzf"
+cache_makelink   ".fzf" "fzf"
+cache_verifylink ".fzf" "fzf"
 
 ~/.fzf/install --all

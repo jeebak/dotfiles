@@ -3,6 +3,6 @@
 CURRENT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "$CURRENT_DIR/../../.lib/scripts/common.bash"
 
-mkdir_p "$CACHE_ROOT/tmux"
-makelink   "$HOME/.tmux" "$CACHE_ROOT/tmux"
-verifylink "$HOME/.tmux" "$CACHE_ROOT/tmux"
+cache_mkdir_p            "tmux"
+cache_makelink   ".tmux" "tmux"
+cache_verifylink ".tmux" "tmux"

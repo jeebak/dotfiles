@@ -3,5 +3,5 @@
 CURRENT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "$CURRENT_DIR/../../.lib/scripts/common.bash"
 
-verifylink "$HOME/.fzf" "$CACHE_ROOT/fzf"
+cache_verifylink ".fzf" "fzf"
 rm -vf "$HOME/.fzf" "$HOME"/.fzf.*sh
