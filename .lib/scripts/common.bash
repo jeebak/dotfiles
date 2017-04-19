@@ -50,8 +50,8 @@ cache_shallow_clone () {
   [[ ! -d "$CACHE_ROOT/$2" ]] && git clone --depth 1 "$1" "$CACHE_ROOT/$2" || true
 
   qt pushd "$CACHE_ROOT/$2"
-  git reflog expire --expire=now --all
-  git gc --aggressive --prune=now
+# git reflog expire --expire=now --all
+# git gc --aggressive --prune=now
   git submodule init && git submodule update
   qt popd
 }
