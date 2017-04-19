@@ -9,6 +9,20 @@ trap 'EC=$?; BAD_CMD="$prev_cmd"; [[ $EC -ne 0 ]] && echo "Exit: $EC, due to: $B
 
 CACHE_ROOT="$HOME/.cache/dotfiles"
 
+# Quiet stdout and stderr
+qt() {
+  "$@" > /dev/null 2>&1
+}
+
+# Quiet stderr
+qte() {
+  "$@" 2> /dev/null
+}
+
+cmd_exists() {
+  command -v "$1" > /dev/null 2>&1
+}
+
 cache_mkdir_p () {
   for i in "$@"; do
    # shellcheck disable=SC2015
@@ -35,7 +49,9 @@ cache_shallow_clone () {
    # shellcheck disable=SC2015
   [[ ! -d "$CACHE_ROOT/$2" ]] && git clone --depth 1 "$1" "$CACHE_ROOT/$2" || true
 
-  pushd "$CACHE_ROOT/$2" > /dev/null
+  qt pushd "$CACHE_ROOT/$2"
+  git reflog expire --expire=now --all
+  git gc --aggressive --prune=now
   git submodule init && git submodule update
-  popd > /dev/null
+  qt popd
 }
