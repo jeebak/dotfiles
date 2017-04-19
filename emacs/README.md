@@ -1,3 +1,9 @@
+# Spacemacs
+
+_"A community-driven Emacs distribution. The best editor is neither Emacs nor Vim, it's Emacs and Vim!"_
+
+* http://spacemacs.org/
+
 # Mainly Notes For Myself
 
 ## Installation
