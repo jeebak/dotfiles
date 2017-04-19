@@ -8,18 +8,18 @@ stow-all: ACTION = stow
 stow-all: STOW_OPTIONS =
 stow-all: $(STOWABLE)
 
-restow-all: ACTION = restow
-restow-all: STOW_OPTIONS = -R
-restow-all: $(STOWABLE)
-
 unstow-all: ACTION = unstow
 unstow-all: STOW_OPTIONS = -D
 unstow-all: $(STOWABLE)
 
+# Stow has -R option, but use this, to trigger *-unstow and *-stow hooks
+restow-all: unstow-all
+	make stow-all
+
 $(STOWABLE):
 	@echo "$$(tput setaf 3)Processing: $$(tput setaf 5)$@$$(tput sgr0)"
 	@[[ -x "$@/hooks/pre-$(ACTION)" ]] \
-		&& { echo "$$(tput setaf 5)  Running $$(tput setaf 3)pre-invoke$$(tput setaf 5) hook$$(tput sgr0)"; "./$@/hooks/pre-$(ACTION)"; } \
+		&& { echo "$$(tput setaf 5)  Running $$(tput setaf 3)pre-$(ACTION)$$(tput setaf 5) hook$$(tput sgr0)"; "./$@/hooks/pre-$(ACTION)"; } \
 		|| true
 	@stow -v -t "$$HOME" \
 		--no-folding \
@@ -27,7 +27,7 @@ $(STOWABLE):
 		--ignore='^hooks$$' \
  		$(STOW_OPTIONS) $@
 	@[[ -x "$@/hooks/post-$(ACTION)" ]] \
-		&& { echo "$$(tput setaf 5)  Running $$(tput setaf 3)post-invoke$$(tput setaf 5) hook$$(tput sgr0)"; "./$@/hooks/post-$(ACTION)"; } \
+		&& { echo "$$(tput setaf 5)  Running $$(tput setaf 3)post-$(ACTION)$$(tput setaf 5) hook$$(tput sgr0)"; "./$@/hooks/post-$(ACTION)"; } \
 		|| true
 
 .PHONY: $(STOWABLE)
