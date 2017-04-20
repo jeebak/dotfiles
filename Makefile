@@ -1,4 +1,5 @@
 SHELL := /bin/bash
+STOW_TARGET = $$HOME
 
 ACTION = stow
 STOWABLE = \
@@ -33,7 +34,7 @@ $(STOWABLE):
 	@[[ -x "$@/hooks/pre-$(ACTION)" ]] \
 		&& { echo "$$(tput setaf 5)  Running $$(tput setaf 3)pre-$(ACTION)$$(tput setaf 5) hook$$(tput sgr0)"; "./$@/hooks/pre-$(ACTION)"; } \
 		|| true
-	@stow -v -t "$$HOME" \
+	@stow -v -t "$(STOW_TARGET)" \
 		--no-folding \
 		--ignore='^README.md$$' \
 		--ignore='^hooks$$' \
