@@ -12,6 +12,7 @@ STOWABLE = \
   less \
   mpv \
   mysql \
+  readline \
   screen \
   ranger \
   tmux

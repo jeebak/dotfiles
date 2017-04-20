@@ -1,0 +1,86 @@
+# vim:filetype=readline:
+#
+# http://linuxart.com/log/archives/2005/10/13/super-useful-inputrc/
+# http://www.pixelbeat.org/settings/.inputrc
+# http://www.linuxfromscratch.org/lfs/view/6.2/chapter07/inputrc.html
+# http://unix.stackexchange.com/questions/17012/inputrc-tab-not-behaving-as-expected
+# http://www.faqs.org/docs/bashman/bashref_90.html#SEC97
+# http://ss64.com/bash/syntax-inputrc.html
+# http://blog.sanctum.geek.nz/lazier-tab-completion/
+
+# man bash # search for: Readline Variables
+set bell-style                        visible
+set completion-ignore-case            on
+set completion-map-case               on
+set completion-prefix-display-length  4
+set completion-query-items            -1
+set convert-meta                      off
+set editing-mode                      emacs
+set expand-tilde                      off
+set input-meta                        on
+set keymap                            emacs
+set mark-symlinked-directories        on
+set output-meta                       on
+set page-completions                  off
+set show-all-if-ambiguous             on
+set show-all-if-unmodified            on
+set visible-stats                     on
+
+# Readline Conditional Constructs, mode/term/application
+
+"\C-w": unix-filename-rubout
+
+# mode
+$if mode=emacs
+  # misc
+  "\en": history-search-forward
+  "\ep": history-search-backward
+$endif
+
+$if mode=vi
+#$else
+$endif
+
+# application
+$if Mysql
+$endif
+
+$if Bash
+  TAB: menu-complete
+  "\e[Z": menu-complete-backward
+
+  # Use: bind -p to list, -P and -l are useful, too.
+
+  # F10 toggles mc on and off
+  # Note Ctrl-o toggles panes on and off in mc
+  "\e[21~": "mc\C-M"
+
+  # do history expansion when space entered
+  Space: magic-space
+
+  # Alt-e attempts to edit what's on the command line
+  "\ee": "\C-a${EDITOR:-vim} \n"
+
+  # Alt-g git greps what's on the line
+  "\eg": "\C-agit grep \n"
+
+  # Alt-l pipes to pager/less
+  "\el": "| ${PAGER:-less}\n"
+
+  # Alt-shift-l for downcase-word
+  "\eL": downcase-word
+
+  # Ctrl-o
+  "\C-o": "eval \"$(ifilter.bash git-ls-tree-fzf)\"\n"
+
+  # Alt-o
+  "\eo": "eval \"$(ifilter.bash git-ls-tree-peco)\"\n"
+
+  # Alt-s
+  "\es": "eval \"$(ifilter.bash git-src)\"\n"
+$endif
+
+# Use: showkey -a # to get the code of a key sequence
+# Include system wide settings which are ignored
+# # by default if one has their own .inputrc
+$include /etc/inputrc
