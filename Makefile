@@ -16,7 +16,16 @@ STOWABLE = \
   screen \
   ranger \
   tmux
-STOW_OPTIONS =
+
+# if the *first* argument is 'unstow,'
+ifeq (unstow, $(firstword $(MAKECMDGOALS)))
+# then set variables accordingly
+unstow:
+	@echo "$$(tput setaf 3)Setting: $$(tput setaf 5)STOW_OPTIONS = -D$$(tput sgr0)"
+	$(eval STOW_OPTIONS = -D)
+	@echo "$$(tput setaf 3)Setting: $$(tput setaf 5)ACTION = unstow$$(tput sgr0)"
+	$(eval ACTION = unstow)
+endif
 
 stow-all: ACTION = stow
 stow-all: STOW_OPTIONS =
