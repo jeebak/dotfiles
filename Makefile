@@ -2,20 +2,8 @@ SHELL := /bin/bash
 STOW_TARGET = $$HOME
 
 ACTION = stow
-STOWABLE = \
-  beets \
-  colordiff \
-  emacs \
-  fzf \
-  git \
-  jshint \
-  less \
-  mpv \
-  mysql \
-  readline \
-  screen \
-  ranger \
-  tmux
+# Bash completions seems to handle this fine, but not zsh :/
+STOWABLE=$(shell echo */ | sed 's;/;;g')
 
 # if the *first* argument is 'unstow,'
 ifeq (unstow, $(firstword $(MAKECMDGOALS)))
