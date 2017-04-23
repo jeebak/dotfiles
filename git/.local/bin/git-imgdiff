@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# http://www.akikoskinen.info/image-diffs-with-git/
+# Requires: brew install imagemagick --with-x11 (or reinstall)
+
+compare "$2" "$1" png:- | montage -geometry +4+4 "$2" - "$1" png:- | display -title "$1" -

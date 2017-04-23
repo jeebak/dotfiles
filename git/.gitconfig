@@ -118,9 +118,11 @@
   cachetextconv = false
   binary = true
 
-[diff "jpg"]
-  textconv = exiftool
-  cachetextconv = true
+# Requires: diff=image in gitattributesfil
+[diff "image"]
+  command = ~/.local/bin/git-imgdiff
+# textconv = exiftool
+# cachetextconv = true
 
 [diff "pdf"]
   textconv = pdfinfo
