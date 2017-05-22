@@ -1,9 +1,7 @@
-# readline
+# Readline
 
-_"tagline for readline ...and such™"_
+_"The GNU Readline Library"_
 
-```
-brew install readline
-```
+* https://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
 
-* http://readline-site.com/
+Add your notes here.
