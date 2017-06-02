@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# More details in .lib/README.md
+export PKG_TYPE="brew-cask"
+
+pkg-install appcode
+pkg-install clion
+pkg-install datagrip
+pkg-install intellij-idea
+pkg-install phpstorm
+pkg-install pycharm
+pkg-install rubymine
+pkg-install webstorm

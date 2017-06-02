@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# More details in .lib/README.md
+export PKG_TYPE="brew-cask"
+
+pkg-uninstall appcode
+pkg-uninstall clion
+pkg-uninstall datagrip
+pkg-uninstall intellij-idea
+pkg-uninstall phpstorm
+pkg-uninstall pycharm
+pkg-uninstall rubymine
+pkg-uninstall webstorm
