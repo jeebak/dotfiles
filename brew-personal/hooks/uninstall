@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# More details in .lib/README.md
+export PKG_TYPE="brew"
+
+pkg-uninstall advcp
+pkg-uninstall mined
+pkg-uninstall vis
+pkg-uninstall wordwarvi
+# pkg-uninstall jupp # conflicts with joe
+brew-untap jeebak/personal

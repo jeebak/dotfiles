@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# More details in .lib/README.md
+export PKG_TYPE="brew"
+
+brew-tap jeebak/personal
+pkg-install advcp
+pkg-install mined
+pkg-install vis
+pkg-install wordwarvi
+# pkg-install jupp # conflicts with joe
