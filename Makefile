@@ -63,6 +63,6 @@ $(STOWABLE): stow-available
 	@$(SCRIPTS)/process-hooks "$@" "post" "$(HOOK)"
 # -----------------------------------------------------------------------------
 stow-available:
-	@command -v stow > /dev/null || make install gnu-stow
+	@command -v stow > /dev/null || { source $(SCRIPTS)/common.bash && PKG_TYPE="brew apt-get" pkg-install stow; }
 # -----------------------------------------------------------------------------
 .PHONY: $(STOWABLE)
