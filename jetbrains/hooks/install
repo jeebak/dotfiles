@@ -3,6 +3,7 @@
 # More details in .lib/README.md
 export PKG_TYPE="brew-cask"
 
+pkg-install android-studio-canary
 pkg-install appcode
 pkg-install clion
 pkg-install datagrip
