@@ -45,12 +45,6 @@
   untracked = cyan
 
 [core]
-  # https://stackoverflow.com/questions/9976986/force-lf-eol-in-git-repo-and-working-copy
-  eol             = native
-  autoeol         = true
-  # Add to .gitattributes file:
-  #   * text=auto
-
   # Variables don't work in this file, but git defaults to: $VISUAL or $EDITOR,
   # then vi, anyway
   # editor          = $EDITOR
@@ -126,7 +120,7 @@
 
 # Requires: diff=image in gitattributesfile
 # [diff "image"]
-#  command = ~/.local/bin/git-imgdiff
+#   command = ~/.local/bin/git-imgdiff
 # textconv = exiftool
 # cachetextconv = true
 
