@@ -1,6 +1,7 @@
 # http://beets.readthedocs.io/en/v1.4.2/guides/main.html
-# !!!!! --- NO sudo ON MACs --- !!!!!
-#   sudo pip install beets
+# My personal prefrence is to use pyenv and Homebrew / Linuxbrew, so...
+# !!!!! --- NO sudo --- !!!!!
+#   pip install beets
 #   beet help
 #   beet config -p # show path
 #     ~/.config/beets/config.yaml
@@ -17,12 +18,11 @@ format_item: %the{$albumartist}/$folder_year - $album%aunique{}/$disc_and_track 
 
 # http://beets.readthedocs.io/en/v1.4.2/plugins/chroma.html
 # https://github.com/beetbox/pyacoustid
-#   sudo pip install pyacoustid
-#   sudo pip install requests
-#   sudo pip install flask
-#   sudo pip install discogs-client
-#   sudo apt-get install libchromaprint-tools
-#   - or - brew install chromaprint
+#   pip install pyacoustid
+#   pip install requests
+#   pip install flask
+#   pip install discogs-client
+#   brew install chromaprint
 plugins: chroma convert discogs duplicates edit export fetchart fromfilename fuzzy hook importadded info inline missing permissions play random replaygain rewrite the web
 # ~/.config/beets/discogs_token.json
 
