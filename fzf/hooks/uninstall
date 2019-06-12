@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+FZF_HOME="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles/fzf"
+
 # More details in .lib/README.md
-if [[ -x ~/.fzf/uninstall ]]; then
-  ~/.fzf/uninstall
+if [[ -x "$FZF_HOME/uninstall" ]]; then
+  "$FZF_HOME/uninstall" --xdg
 fi

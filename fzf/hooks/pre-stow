@@ -1,5 +1,2 @@
 #!/usr/bin/env bash
 
-cache_shallow_clone https://github.com/junegunn/fzf.git "fzf"
-cache_makelink   ".fzf" "fzf"
-cache_verifylink ".fzf" "fzf"

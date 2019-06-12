@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+FZF_HOME="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles/fzf"
+
 # More details in .lib/README.md
-if [[ ! -x ~/.fzf/install ]]; then
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
+if [[ ! -x "$FZF_HOME/install" ]]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git "$FZF_HOME"
 fi
+
+"$FZF_HOME/install" --xdg --all
