@@ -11,7 +11,7 @@
 # C moves to the next line starting with "commit"
 #   Type: '' to jump back to point before search
 
-# http://chneukirchen.org/blog/category/zsh.html
+# http://chneukirchen.org/blog/archive/2015/02/six-hacks-for-less-1.html
 #command
 h left-scroll
 l right-scroll
@@ -21,8 +21,8 @@ j forw-line-force
 ] next-file
 Q quit \1
 :cq quit \1
-D noaction j/\^diff|\^commit|From \n\eu
-C noaction j/\^commit \n\eu
+D noaction j/\^(diff|commit|From|[a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9]) \n\eu
+C noaction j/\^(commit|[a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9]) \n\eu
 
 #line-edit
 
