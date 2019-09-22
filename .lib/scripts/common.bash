@@ -66,12 +66,12 @@ cache_makelink () {
 
 cache_shallow_clone () {
    # shellcheck disable=SC2015
-  [[ ! -d "$CACHE_ROOT/$2" ]] && git clone --depth 1 "$1" "$CACHE_ROOT/$2" || true
+  [[ ! -d "$CACHE_ROOT/$2" ]] && command git clone --depth 1 "$1" "$CACHE_ROOT/$2" || true
 
   qt pushd "$CACHE_ROOT/$2"
-# git reflog expire --expire=now --all
-# git gc --aggressive --prune=now
-  git submodule init && git submodule update
+# command git reflog expire --expire=now --all
+# command git gc --aggressive --prune=now
+  command git submodule init && command git submodule update
   qt popd
 }
 # -----------------------------------------------------------------------------
