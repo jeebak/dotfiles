@@ -326,8 +326,12 @@ if cmd-exists yadm; then
   yalm() { # Wrapper for yadm, that's "localfiles" aware
     # Yet another "localfiles" manager (based on hostname)
     local _hostname="$(hostname -s)"
+    local yadm_root="$(
+      qte command ls -d ~/.config/yadm ||
+      qte command ls -d ~/.yadm
+    )"
 
-    command yadm --yadm-repo ~/.yadm/"repo-${_hostname}.git" "$@"
+    command yadm --yadm-repo "$yadm_root/repo-${_hostname}.git" "$@"
   }
 fi
 
