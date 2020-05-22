@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# More details in .lib/README.md
-export PKG_TYPE="brew-cask"
-pkg-install "$@"
